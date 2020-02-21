@@ -4,16 +4,17 @@
   "description": "Protractor using Cucumber Test Framework",
   "main": "protractor.config.js",
   "scripts": {
-    "/": "Setup Local Dependencies",
-    "protractor": "./node_modules/protractor/build/cli.js",
-    "webdriver-update": "./node_modules/.bin/webdriver-manager update --versions.chrome=78.0.3904.87",
-    "chrome-version": "--versions.chrome=78.0.3904.87",
-    "//": "Setup Builds",
-    "init": "npm run tsc & npm run webdriver-update && npm run test",
-    "e2e": "npm run tsc && npm run test-cucumber",
+    "/": "Setup Preparation",
     "tsc": "tsc",
-    "test": "protractor temp/protractor.config.js",
-    "test-cucumber": "protractor temp/cucumber.config.js"
+    "protractor": "./node_modules/protractor/build/cli.js",
+    "webdriver-update-latest": "./node_modules/.bin/webdriver-manager update",
+    "webdriver-update-specific": "./node_modules/.bin/webdriver-manager update --versions.chrome=78.0.3904.87",
+    "report": "node ./temp/cucumber-html-reporter.js",
+
+    "//": "Setup Builds",
+    "test-jasmine": "protractor temp/jasmine.config.js",
+    "test-cucumber": "protractor temp/cucumber.config.js",
+    "e2e": "npm run tsc && npm run test-cucumber & npm run report"
   },
   "keywords": [
     "typescript protractor cucumber jasmine"

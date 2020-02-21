@@ -7,15 +7,18 @@ let options = {
     reportSuiteAsScenarios: true,
     scenarioTimestamp: true,
     launchReport: true,
+    storeScreenshots: true,
+
+    //Provide Enironment Information
+    brandTitle: "Calculator Brand",
+    name:"QA Enironment",
     metadata: {
-        "brandTitle": "Calculator Brand",
-        "name": "Calculator Name",
-        "App Version": "0.3.2",
-        "Test Environment": "STAGING",
-        "Browser": "Chrome  54.0.2840.98",
+        "App Version": "1.0",
+        "Test Environment": "QA",
+        "Browser": "Chrome Version 80.0.3987.116",
         "Platform": "Windows 10",
         "Parallel": "Scenarios",
-        "Executed": "Remote"
+        "Executed": "Local Only"
     }
 };
 
