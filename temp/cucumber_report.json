@@ -1,0 +1,167 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "This is my calcultor",
+    "line": 2,
+    "id": "this-is-my-calcultor",
+    "tags": [
+      {
+        "name": "@Feature1",
+        "line": 1
+      }
+    ],
+    "uri": "features\\calculator.feature",
+    "elements": [
+      {
+        "id": "this-is-my-calcultor;add-two-numbers",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Add two numbers",
+        "tags": [
+          {
+            "name": "@Feature1",
+            "line": 1
+          },
+          {
+            "name": "@Test1",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "Open the calcultor site",
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I add two numbers \"1\" and \"2\"",
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 235000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the output is \"3\"",
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2089000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "this-is-my-calcultor;add-two-numbers",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Add two numbers",
+        "tags": [
+          {
+            "name": "@Feature1",
+            "line": 1
+          },
+          {
+            "name": "@Test2",
+            "line": 10
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "Open the calcultor site",
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I add two numbers \"5\" and \"2\"",
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 150000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the output is \"8\"",
+            "match": {
+              "location": "step_definitions\\calculator.steps.ts:38"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 2034000000,
+              "error_message": "AssertionError\n    + expected - actual\n\n    -7\n    +8\n\n    at C:\\Study\\ProtrctorCucumber\\step_definitions\\calculator.steps.ts:41:58\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Study\\ProtrctorCucumber\\temp\\step_definitions\\calculator.steps.js:5:58)\n    at process._tickCallback (internal/process/next_tick.js:68:7)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

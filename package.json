@@ -1,0 +1,40 @@
+{
+  "name": "test_automation",
+  "version": "1.0.0",
+  "description": "Protractor using Cucumber Test Framework",
+  "main": "protractor.config.js",
+  "scripts": {
+    "/": "Setup Local Dependencies",
+    "protractor": "./node_modules/protractor/build/cli.js",
+    "webdriver-update": "./node_modules/.bin/webdriver-manager update --versions.chrome=78.0.3904.87",
+    "chrome-version": "--versions.chrome=78.0.3904.87",
+    "//": "Setup Builds",
+    "init": "npm run tsc & npm run webdriver-update && npm run test",
+    "e2e": "npm run tsc && npm run test-cucumber",
+    "tsc": "tsc",
+    "test": "protractor temp/protractor.config.js",
+    "test-cucumber": "protractor temp/cucumber.config.js"
+  },
+  "keywords": [
+    "typescript protractor cucumber jasmine"
+  ],
+  "author": "Kenneth Mercado (x186177)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.9",
+    "@types/cucumber": "^6.0.1",
+    "@types/jasmine": "3.5.4",
+    "@types/jasminewd2": "2.0.8",
+    "@types/node": "^13.7.4",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^6.0.5",
+    "cucumber-html-reporter": "^5.1.0",
+    "jasmine": "3.5.0",
+    "protractor": "^5.4.3",
+    "protractor-cucumber-framework": "^6.2.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}
