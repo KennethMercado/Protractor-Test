@@ -1,51 +1,52 @@
-import { Given, When, Then, BeforeAll, Before } from "cucumber";
+import { Given, When, Then } from "cucumber";
 import { CalculatorPage } from "../page_objects/calculator.po";
-import { browser } from "protractor";
+import chai from "chai";
 
-let chai = require("chai");
-let chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
 let expect = chai.expect;
+let objCalculatorPage: CalculatorPage;
 
-
-let objCalculatorPage = new CalculatorPage();
-
-// Synchronous
-BeforeAll(async () => {
-    // perform some shared setup
-    //await objCalculatorPage.navigateTo();
+Given('I have a calculator', function () {
+    objCalculatorPage = new CalculatorPage();
 });
 
-Before({ tags: "@Test2" }, async ({ sourceLocation, pickle }) => {
-    // perform some shared setup
-    browser.executeScript(`
-        let objHeader = document.getElementsByTagName("h3")[0]; 
-        objHeader.textContent=objHeader.textContent + " - " + "${pickle.tags[1].name}"; 
-        objHeader.style = "color:blue";`
-    );
-
+When('I add {int} and {int}', async (firstNumber: number, secondNumber: number) => {
+    await objCalculatorPage.setFirstNumber(firstNumber);
+    await objCalculatorPage.setSecondNumber(secondNumber);
 });
 
-Given('Open the calcultor site', async () => {
-    debugger;
-});
-
-When('I add two numbers {string} and {string}', async (string, string2) => {
-    await objCalculatorPage.setFirstNumber(string);
-    await objCalculatorPage.setSecondNumber(string2);
-});
-
-Then('the output is {string}', async (string) => {
+Then('the result should be {int}', async (total: number) => {
     await objCalculatorPage.goButton_click();
 
-    expect(await objCalculatorPage.getLatestResult()).to.equal(string);
+    expect(await objCalculatorPage.getLatestResult()).to.equal(total.toString());
 });
 
 
-//TODO: Check when done
-// var world = this;
+// The example below uses hash table as data input.
+// interface IGiven {
+//     FirstNumber: number;
+//     SecondNumber: number;
+// }
 
-// browser.takeScreenshot().then((buffer) => {
-//         browser.driver.driver
-//     return world.attach(buffer, 'image/png');
-// };
+// interface IWhen {
+//     Operation: string;
+// }
+
+// interface IAnswer {
+//     Answer: number;
+// }
+
+// let objGiven: Array<IGiven>;
+// let objWhen: Array<IWhen>;
+// let objAnswer: Array<IWhen>;
+
+// Given('the below values.', function (dataTable) {
+//     objGiven = dataTable.hashes();
+// });
+
+// When('the following operations is performed.', function (dataTable) {
+//     objWhen = dataTable.hashes();
+// });
+
+// Then('the answer is correct.', function (dataTable) {
+//     objAnswer = dataTable.hashes();
+// });
