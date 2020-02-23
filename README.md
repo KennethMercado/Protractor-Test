@@ -1,5 +1,6 @@
 # Protractor-Test
 Learning Protractor and Cucumber
 
-npm install
-npm run e2e-report
+
+1. npm install
+2. npm run e2e-report
