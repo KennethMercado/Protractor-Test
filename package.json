@@ -1,25 +1,28 @@
 {
-  "name": "test_automation",
+  "name": "protractor_test",
   "version": "1.0.0",
   "description": "Protractor using Cucumber Test Framework",
   "main": "protractor.config.js",
   "scripts": {
     "/": "Setup Preparation",
-    "tsc": "tsc",
+    "delete-temp-files":"node delete-temp-files.js",
+    "tsc": "npm run delete-temp-files && tsc",
     "protractor": "./node_modules/protractor/build/cli.js",
     "webdriver-update-latest": "./node_modules/.bin/webdriver-manager update",
     "webdriver-update-specific": "./node_modules/.bin/webdriver-manager update --versions.chrome=78.0.3904.87",
-    "report": "node ./temp/cucumber-html-reporter.js",
-
+    "report": "node -e  require('./temp/cucumber-html-reporter').ReportGenerator.generateReport();",
     "//": "Setup Builds",
-    "test-jasmine": "protractor temp/jasmine.config.js",
-    "test-cucumber": "protractor temp/cucumber.config.js",
-    "e2e": "npm run tsc && npm run test-cucumber & npm run report"
+    "test-jasmine": "npm run tsc && protractor ./temp/jasmine.config.js",
+    "test-cucumber": "npm run tsc && protractor ./temp/cucumber.config.js",
+    "e2e": "npm run test-cucumber",
+    "e2e-report": "npm run test-cucumber & npm run report",
+    "///": "To Debug: Open Chrome URL: chrome://inspect/#devices",
+    "debug": "npm run tsc && node --inspect-brk ./node_modules/protractor/bin/protractor ./temp/cucumber.config.js"
   },
   "keywords": [
     "typescript protractor cucumber jasmine"
   ],
-  "author": "Kenneth Mercado (x186177)",
+  "author": "Kenneth Mercado",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

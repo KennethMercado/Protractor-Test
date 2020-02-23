@@ -1,6 +1,6 @@
-let reporter = require('cucumber-html-reporter');
+import * as  reporter from 'cucumber-html-reporter';
 
-let options = {
+const options = {
     theme: 'bootstrap',
     jsonFile: 'temp/cucumber_report.json',
     output: 'temp/cucumber_report.html',
@@ -9,9 +9,9 @@ let options = {
     launchReport: true,
     storeScreenshots: true,
 
-    //Provide Enironment Information
-    brandTitle: "Calculator Brand",
-    name:"QA Enironment",
+    // Provide Enironment Information
+    brandTitle: "Calculator",
+    name: "QA Enironment",
     metadata: {
         "App Version": "1.0",
         "Test Environment": "QA",
@@ -22,4 +22,8 @@ let options = {
     }
 };
 
-reporter.generate(options);
+export class ReportGenerator {
+    static generateReport(): void {
+        reporter.generate(options);
+    }
+}

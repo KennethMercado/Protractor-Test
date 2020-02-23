@@ -1,4 +1,5 @@
 import { Config, browser } from 'protractor';
+import { ReportGenerator } from './cucumber-html-reporter';
 
 export let config: Config = {
     directConnect: true,
@@ -26,8 +27,9 @@ export let config: Config = {
             './step_definitions/*.js' // accepts a glob
         ],
         // To run specific scope
-        //tags: '@Test1 or @Test2'
-        //tags: '@Test2'
+        //tags: '@Feature1',
+        //tags: '@Test1',
+        //tags: '@Test1 or @Test2',
         format: 'json:./temp/cucumber_report.json'
     },
 
@@ -51,6 +53,10 @@ export let config: Config = {
             const url = await browser.driver.getCurrentUrl();
             return /protractor-demo/.test(url);
         }, 10000);
+    },
+
+    onComplete: async () => {
+        ReportGenerator.generateReport();
     }
 
 }
