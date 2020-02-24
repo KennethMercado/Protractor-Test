@@ -4,19 +4,32 @@
   "description": "Protractor using Cucumber Test Framework",
   "main": "protractor.config.js",
   "scripts": {
-    "/": "Setup Preparation",
-    "delete-temp-files":"node delete-temp-files.js",
+    "1)": "Setup Preparation",
+    "delete-temp-files": "node delete-temp-files.js",
     "tsc": "npm run delete-temp-files && tsc",
     "protractor": "./node_modules/protractor/build/cli.js",
-    "webdriver-update-latest": "./node_modules/.bin/webdriver-manager update",
-    "webdriver-update-specific": "./node_modules/.bin/webdriver-manager update --versions.chrome=78.0.3904.87",
+    
+    "chrome-webdriver-update-latest": "./node_modules/.bin/webdriver-manager update",
+    "chrome-webdriver-update-specific": "./node_modules/.bin/webdriver-manager update --versions.chrome=78.0.3904.87",
+    
+    "ie-webdriver-update-latest": "./node_modules/.bin/webdriver-manager update --ie",
+    "ie-webdriver-start": "./node_modules/.bin/webdriver-manager start --ie",
+
+    "/":"TODO: EDGE IS NOT WORKING YET!!!",
+    "edge-webdriver-update-latest": "./node_modules/.bin/webdriver-manager update --edge",
+    "edge-webdriver-start": "./node_modules/.bin/webdriver-manager start --edge",
+    
     "report": "node -e  require('./temp/cucumber-html-reporter').ReportGenerator.generateReport();",
-    "//": "Setup Builds",
+    
+    "2)": "Setup Builds",
     "test-jasmine": "npm run tsc && protractor ./temp/jasmine.config.js",
-    "test-cucumber": "npm run tsc && protractor ./temp/cucumber.config.js",
-    "e2e": "npm run test-cucumber",
-    "e2e-report": "npm run test-cucumber & npm run report",
-    "///": "To Debug: Open Chrome URL: chrome://inspect/#devices",
+    
+    "chrome-e2e": "npm run tsc && protractor ./temp/cucumber.config.js",
+    "ie-e2e": "npm-run-all -p -r ie-webdriver-start chrome-e2e",
+    
+    "chrome-e2e-report": "npm run chrome-e2e & npm run report",
+    
+    "3)": "To Debug: Open Chrome URL: chrome://inspect/#devices",
     "debug": "npm run tsc && node --inspect-brk ./node_modules/protractor/bin/protractor ./temp/cucumber.config.js"
   },
   "keywords": [
@@ -39,6 +52,7 @@
     "protractor": "^5.4.3",
     "protractor-cucumber-framework": "^6.2.0",
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "npm-run-all":"^4.1.5"
   }
 }

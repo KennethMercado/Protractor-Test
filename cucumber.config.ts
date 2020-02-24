@@ -2,12 +2,41 @@ import { Config, browser } from 'protractor';
 import { ReportGenerator } from './cucumber-html-reporter';
 
 export let config: Config = {
-    directConnect: true,
     SELENIUM_PROMISE_MANAGER: false,
 
-    // Capabilities to be passed to the webdriver instance.
+    // Use for Chrome Settings Only
+    // Usage: Uncomment the settings below and execute.
+    // npm run chrome-e2e
+    // directConnect: true,
+    // capabilities: {
+    //     'browserName': 'chrome',
+
+    //     // Usage: Uncomment the line below to run testing in the background
+    //     // chromeOptions: {
+    //     //     args: ['--headless', '--disable-gpu']
+    //     // }
+    // },
+
+    // Use IE Settings Only
+    // Usage: Uncomment the settings below and execute.
+    // npm run ie-e2e
+    directConnect: false,
+    seleniumAddress: 'http://localhost:4444/wd/hub',
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'internet explorer',
+        //'browserName': 'MicrosoftEdge',
+        'ignoreProtectedModeSettings': true,
+        'platform': 'ANY',
+        'version': '11',
+        args: ['--silent', '--no-sandbox', '--test-type=browser', '--lang=US', '--start-maximized'], //,'--headless', '--disable-gpu' 
+        prefs: {
+            'download': {
+                'prompt_for_download': false,
+                'directory_upgrade': true,
+                'extensions_to_open': '',
+                'default_directory': process.cwd() + '/downloads/'
+            },
+        }
     },
 
     // set to "custom" instead of cucumber.
