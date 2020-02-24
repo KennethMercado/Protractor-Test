@@ -15,6 +15,18 @@ export class CalculatorPage {
 
     async navigateTo(): Promise<void> {
         await browser.get('http://juliemr.github.io/protractor-demo/');
+        browser.executeScript(`
+            let focusable = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            
+            for (let i = 0; i < focusable.length; i++) {
+                focusable[i].addEventListener("focus", function () {
+                    this.style.border = "3px solid red";  
+                });
+                focusable[i].addEventListener("blur", function () {
+                    this.style.border = "";  
+                });
+            }
+        `);
     }
 
     async getTitle(): Promise<string> {
